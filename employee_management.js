@@ -113,3 +113,31 @@ class Department {
 console.log(`Engineering department total Salary: $${Engineering.getDepartmentSalary()}`);
 console.log(`Engineering Department total salary bonus: $${Engineering.calculateTotalSalaryWithBonus()}`);
 
+// Task 5: Create and Manage Departments and Employees
+// From lines 118-125, those commented out have already been created before for test cases. These below are for demo purpose
+// const Engineering = new Department("Engineering");
+const Marketing = new Department("Marketing");
+// const alice = new Employee("Alice", 80000, "Developer", "Engineering");
+// const bob = new Employee("Bob", 75000, "Designer", "Marketing");
+// const robert = new Manager("Robert", 300000, "Lead Manager", "Engineering", 20000);
+const sara = new Manager("Sara", 400000, "Marketing Manager", "Marketing", 40000);
+// Engineering.addEmployee(robert);
+// Engineering.addEmployee(alice);
+// adding employees for marketing dep. 
+Marketing.addEmployee(bob);
+Marketing.addEmployee(sara);
+// display dep. salary for engineering and marketing
+console.log(`Total Engineering Salary: $${Engineering.getDepartmentSalary()}`);
+console.log(`Total Marketing Salary: $${Marketing.getDepartmentSalary()}`);
+// display dep. salary with bonus for engineering and marketing
+console.log(`Total Engineering Salary With Bonus: $${Engineering.calculateTotalSalaryWithBonus()}`);
+console.log(`Total Marketing Salary With Bonus: $${Marketing.calculateTotalSalaryWithBonus()}`);
+// display total company salary for engineering and marketing dep.
+const totalCompanySalary = Engineering.getDepartmentSalary() + Marketing.getDepartmentSalary();
+// display total company salary with bonus for engineering and marketing dep.
+const totalCompanySalaryWithBonus = Engineering.calculateTotalSalaryWithBonus() + Marketing.calculateTotalSalaryWithBonus();
+// display company wide new structure and updated calculation with bonus for all employees in the company
+console.log("Company Wide New Structure Totals:");
+console.log(`Total Company Salary: $${totalCompanySalary}`);
+console.log(`Total Company Salary With Bonus: $${totalCompanySalaryWithBonus}`);
+
