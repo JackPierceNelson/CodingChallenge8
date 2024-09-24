@@ -36,13 +36,26 @@ class Department {
     getDepartmentSalary() {
         return this.employees.reduce((total, employee) => total + employee.salary, 0); 
     }
+
+    calculateTotalSalaryWithBonus() {
+        return this.employees.reduce((total, employee) => {
+            if (employee instanceof Manager) {
+                return total + employee.bonus + employee.salary;
+            }
+            else {
+                return total + employee.salary;
+            }
+        }, 0);
+    }
 }
+
 // add employees to department
 const Engineering = new Department("Engineering");
-Engineering.addEmployee("Jack");
+
+
 Engineering.addEmployee(alice);
 // calculating department salaries
-console.log(`Engineering department total Salary: $${Engineering.getDepartmentSalary()}`);
+
 
 // Task 3: Create a Manager Class that Inherits from Employee
 class Manager extends Employee {
@@ -62,4 +75,41 @@ class Manager extends Employee {
 // test case
 const robert = new Manager("Robert", 300000, "Lead Manager", "Engineering", 20000);
 console.log(robert.getDetails());
+Engineering.addEmployee(robert);
+// Task 4: Handle Bonuses for Managers
+// added the calculateTotalSalaryWithBonus() to Task 2
+/*
+class Department {
+    // initializing the department with a name and an empty array for employees
+    constructor(name) {
+        this.name = name;
+        this.employees = [];
+    }
+    // add an employee object to the employees array
+    addEmployee(employee) {
+        if (employee instanceof Employee) {
+            this.employees.push(employee);
+        }
+        // checking to ensure the valid employee objects are added
+        else {console.error("Invalid employee object");}
+    }
+    // returns the total salary of all employees in the department and reduce method would sum up all employee salaries
+    getDepartmentSalary() {
+        return this.employees.reduce((total, employee) => total + employee.salary, 0); 
+    }
+
+    calculateTotalSalaryWithBonus() {
+        return this.employees.reduce((total, employee) => {
+            if (employee instanceof Manager) {
+                return total + employee.bonus + employee.salary;
+            }
+            else {
+                return total + employee.salary;
+            }
+        }, 0);
+    }
+}
+    */
+console.log(`Engineering department total Salary: $${Engineering.getDepartmentSalary()}`);
+console.log(`Engineering Department total salary bonus: $${Engineering.calculateTotalSalaryWithBonus()}`);
 
